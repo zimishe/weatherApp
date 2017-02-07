@@ -9,22 +9,18 @@ import ChooseCity from './components/ChooseCity.js'
 import ItemsToShow from './components/ItemsTosShow.js'
 
 import {getData} from './getData.js'
-import {setItemsToShow} from './actions/setItemsToShow.js'
-/*
-import getData from './store.js'
-*/
 
 import './App.css';
 
 class Weather extends React.Component {
-    
-    
     componentDidMount() {
         getData();
         // store.subscribe(() => this.forceUpdate());
     }
 
     render() {
+        
+        console.log('rrr', this.props);
         const
             itemsToShow = store.getState().itemsToShow,
             weatherInfoDetailed = store.getState().weatherData.list.filter(
@@ -56,22 +52,11 @@ class Weather extends React.Component {
     }
 }
 
-//render all
+let dt = store.getState();
 
-function mapStateToProps (store) {
-    return {
-        users: 333333333333
-    }
-}
-
-function mapDispatchToProps(dispatch) {
-    return {
-        setItemsNumber: function (event) {
-            let dataReceived = parseInt(event.target.getAttribute('data-items'));
-
-            dispatch(setItemsToShow(dataReceived))
-        }
-    };
-}
-
-export default Weather;
+export default connect(
+    state => ({
+        someShit: dt
+    }),
+    dispatch => ({})
+)(Weather)
