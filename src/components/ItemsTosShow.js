@@ -3,31 +3,35 @@
  */
 import React from 'react'
 import store from './../store.js'
+import { connect } from 'react-redux'
+
 import {setItemsToShow} from './../actions/setItemsToShow.js'
 
+const mapDispatchToProps = function(dispatch) {
+    return {
+        dispatch,
+        onClick: (event) => {
+            dispatch(setItemsToShow(event))
+        }
+    };
+};
+
+const mapStateToProps = function() {
+    let data = store.getState();
+    
+    return {
+        data : data    
+    }
+};
+
 class ItemsToShow extends React.Component {
-    constructor(props) {
-        super(props);
-
-        this.setItemsNumber = this.setItemsNumber.bind(this);
-    }
-
-    setItemsNumber(event) {
-
-        let dataReceived = parseInt(event.target.getAttribute('data-items'));
-
-        store.dispatch(setItemsToShow(dataReceived));
-    }
-
     render()   {
-        console.log('ooo', this.props);
-
         return (
             <ul className="items-to-show">
-                {store.getState().itemsShow.map(
+                {this.props.data.itemsShow.map(
                     (el, i) =>
                         <li key={i}>
-                            <a onClick={this.setItemsNumber.bind(this)}
+                            <a onClick={this.props.onClick.bind(this)}
                                data-items={el}>
                                 {el}
                             </a>
@@ -39,4 +43,9 @@ class ItemsToShow extends React.Component {
 }
 
 
-export default ItemsToShow
+
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(ItemsToShow)

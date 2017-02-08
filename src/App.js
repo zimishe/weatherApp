@@ -15,21 +15,21 @@ import './App.css';
 class Weather extends React.Component {
     componentDidMount() {
         getData();
-        // store.subscribe(() => this.forceUpdate());
+    }
+    
+    componentWillReceiveProps() {
+        
     }
 
     render() {
-        
-        console.log('rrr', this.props);
-        const
-            itemsToShow = store.getState().itemsToShow,
-            weatherInfoDetailed = store.getState().weatherData.list.filter(
+        let data = this.props.data,
+            itemsToShow = data.itemsToShow,
+            weatherInfoDetailed = data.weatherData.list.filter(
                 (el, i) => i < itemsToShow
             );
 
         return (
             <div className="data">
-                {this.props.users}
                 <Header />
                 <div className="weather-info">
                     {
@@ -52,11 +52,13 @@ class Weather extends React.Component {
     }
 }
 
-let dt = store.getState();
+const mapStateToProps = function() {
+    let data = store.getState();
+    return {
+        data : data
+    }
+};
 
 export default connect(
-    state => ({
-        someShit: dt
-    }),
-    dispatch => ({})
+    mapStateToProps
 )(Weather)

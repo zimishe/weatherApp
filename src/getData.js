@@ -14,7 +14,8 @@ export function getData(cityId) {
 
 
     xhr.open('GET', host, true);
-
+    
+    // eslint-disable-next-line
     let dataParsed;
 
     if (sessionData == null || cityId !== undefined) {
