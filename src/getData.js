@@ -11,8 +11,7 @@ export function getData(cityId) {
 
     // const sessionData = sessionStorage.getItem('weather');
     const sessionData = localStorage.getItem('weather');
-
-
+    
     xhr.open('GET', host, true);
     
     // eslint-disable-next-line

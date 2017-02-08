@@ -18,7 +18,7 @@ class Weather extends React.Component {
     }
     
     componentWillReceiveProps() {
-        
+        // console.log('wr');
     }
 
     render() {
