@@ -10,16 +10,23 @@ import {setCityToShow} from './../actions/setCityToShow.js'
 const mapDispatchToProps = function(dispatch) {
     return {
         dispatch,
-        onChange: (event) => {
-            let receivedCity = event.target.value.toString();
+        onClick: (event) => {
+            let receivedCity = event.target.getAttribute('data-city').toString();
             event.persist();
-            
+
+            let stDate = new Date().setMonth(new Date().getMonth() - 1);
+
             const xhr = new XMLHttpRequest(),
-                host = 'http://api.openweathermap.org/data/2.5/forecast/city?id='+receivedCity+'&units=metric&APPID=23722e5a294348674ba0d24c7f6a1497';
+                appID = '23722e5a294348674ba0d24c7f6a1497',
+                units = 'metric',
+                start = stDate.toString(),
+                end = (+new Date()).toString(),
+                host = 'http://api.openweathermap.org/data/2.5/forecast/',
+                url = host+'city?id='+receivedCity+'&units='+units+'&start='+start+'&end='+end+'&APPID='+appID;
             
             const sessionData = localStorage.getItem('weather');
 
-            xhr.open('GET', host, true);
+            xhr.open('GET', url, true);
 
             // eslint-disable-next-line
             let dataParsed;
@@ -44,6 +51,8 @@ const mapDispatchToProps = function(dispatch) {
 
                             dispatch(setCityToShow(event))
                         }   else {
+                            // alert('Server is not responding')
+                            
                             console.log('Error: ', response.cod);
                         }
                     }
@@ -70,17 +79,21 @@ class ChooseCity extends React.Component {
         let data = this.props.data;
 
         return (
-            <select defaultValue="" className="city-select" onChange={this.props.onChange.bind(this)}>
-                <option value="" disabled>Select your option</option>
+            <ul className="header__city-select">
                 {
                     data.citiesList.map(
                         (el, i) =>
-                            <option key={i} value={el.code}>
-                                {el.city}
-                            </option>
+                            <li key={i}>
+                                <a 
+                                    data-city={el.code} 
+                                    data-caption={el.city} 
+                                    onClick={this.props.onClick.bind(this)}>
+                                    {el.city}
+                                </a>
+                            </li>
                     )
                 }
-            </select>
+            </ul>
         )
     }
 }

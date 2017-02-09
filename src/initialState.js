@@ -23,7 +23,7 @@ const citiesList = [
 const initialState = {
     weatherData: getData(),
     cityToShow: 702550,
-    itemsToShow: 10,
+    itemsToShow: 7,
     itemsShow: toShowArr,
     citiesList: citiesList
 };

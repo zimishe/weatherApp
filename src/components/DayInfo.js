@@ -30,6 +30,24 @@ class DayInfo extends React.Component {
                         <p>{this.props.humidity} %</p>
                     </div>
                 </div>
+                <div className="weather-info__item__clouds">
+                    <p>Clouds:</p>
+                    <div className="clouds">
+                        <p>{this.props.clouds} %</p>
+                    </div>
+                </div>
+                <div className="weather-info__item__description">
+                    <p>Description:</p>
+                    <div className="description">
+                        <p>{this.props.description}</p>
+                    </div>
+                </div>
+                <div className="weather-info__item__wind">
+                    <p>Wind:</p>
+                    <div className="description">
+                        <p>{this.props.windSpeed} m/s, {this.props.windDegree}&deg;</p>
+                    </div>
+                </div>
             </div>
         )
     }

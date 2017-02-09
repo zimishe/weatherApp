@@ -5,14 +5,21 @@
 export function getData(cityId) {
     // let cityId = '702550';
     // console.log('sss', cityId);
-
+    
+    let stDate = new Date().setMonth(new Date().getMonth() - 1);
+    
     const xhr = new XMLHttpRequest(),
-        host = 'http://api.openweathermap.org/data/2.5/forecast/city?id='+cityId+'&units=metric&APPID=23722e5a294348674ba0d24c7f6a1497';
+        appID = '23722e5a294348674ba0d24c7f6a1497',
+        units = 'metric',
+        start = stDate.toString(),
+        end = (+new Date()).toString(),
+        host = 'http://api.openweathermap.org/data/2.5/forecast/',
+        url = host+'city?id='+cityId+'&units='+units+'&start='+start+'&end='+end+'&APPID='+appID;
 
     // const sessionData = sessionStorage.getItem('weather');
     const sessionData = localStorage.getItem('weather');
     
-    xhr.open('GET', host, true);
+    xhr.open('GET', url, true);
     
     // eslint-disable-next-line
     let dataParsed;

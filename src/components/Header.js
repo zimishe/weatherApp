@@ -3,6 +3,7 @@
  */
 import React from 'react'
 import store from './../store.js'
+import ChooseCity from './ChooseCity.js'
 
 class Header extends React.Component {
     render() {
@@ -13,7 +14,12 @@ class Header extends React.Component {
 
         return (
             <div className="header">
-                <p>Displaying weather in {cityName}, {countryCode}</p>
+                <div className="header__info">
+                    <p>
+                        Displaying weather in <strong>{cityName}, {countryCode}</strong>
+                    </p>
+                </div>
+                <ChooseCity />
             </div>
         )
     }

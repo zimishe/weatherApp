@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import store from './store.js'
 import Header from './components/Header.js'
 import DayInfo from './components/DayInfo.js'
-import ChooseCity from './components/ChooseCity.js'
+
 import ItemsToShow from './components/ItemsTosShow.js'
 
 import {getData} from './getData.js'
@@ -28,8 +28,10 @@ class Weather extends React.Component {
                 (el, i) => i < itemsToShow
             );
 
+        console.log('data', data.weatherData);
+        
         return (
-            <div className="data">
+            <div className="data container">
                 <Header />
                 <div className="weather-info">
                     {
@@ -40,13 +42,16 @@ class Weather extends React.Component {
                                 temp_min={el.main.temp_min}
                                 temp_max={el.main.temp_max}
                                 humidity={el.main.humidity}
+                                clouds={el.clouds.all}
+                                description={el.weather[0].description}
+                                windDegree={el.wind.deg}
+                                windSpeed={el.wind.speed}
                             />
                         )
                     }
 
                 </div>
                 <ItemsToShow />
-                <ChooseCity />
             </div>
         )
     }
