@@ -43,6 +43,7 @@ class Weather extends React.Component {
                                 temp_max={el.main.temp_max}
                                 humidity={el.main.humidity}
                                 clouds={el.clouds.all}
+                                weatherCode={el.weather[0].id}
                                 description={el.weather[0].description}
                                 windDegree={el.wind.deg}
                                 windSpeed={el.wind.speed}

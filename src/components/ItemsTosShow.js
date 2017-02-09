@@ -27,17 +27,20 @@ const mapStateToProps = function() {
 class ItemsToShow extends React.Component {
     render()   {
         return (
-            <ul className="items-to-show">
-                {this.props.data.itemsShow.map(
-                    (el, i) =>
-                        <li key={i}>
-                            <a onClick={this.props.onClick.bind(this)}
-                               data-items={el}>
-                                {el}
-                            </a>
-                        </li>
-                )}
-            </ul>
+            <div className="items-to-show">
+                <h4>Items to show:</h4>
+                <ul>
+                    {this.props.data.itemsShow.map(
+                        (el, i) =>
+                            <li key={i}>
+                                <a onClick={this.props.onClick.bind(this)}
+                                   data-items={el}>
+                                    {el}
+                                </a>
+                            </li>
+                    )}
+                </ul>
+            </div>
         )
     }
 }
