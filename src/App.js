@@ -39,6 +39,7 @@ class Weather extends React.Component {
                             (el, i) => <DayInfo
                                 key={i}
                                 date={el.dt_txt}
+                                dt={el.dt}
                                 temp_min={el.main.temp_min}
                                 temp_max={el.main.temp_max}
                                 humidity={el.main.humidity}

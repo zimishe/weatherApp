@@ -34,7 +34,7 @@ body {
         
         &__icon {
             display: flex;
-            flex-basis: 40%;
+            flex-basis: 30%;
             align-items: center;
             justify-content: center;
             padding: 15px 0;
@@ -42,12 +42,23 @@ body {
         
         &__date {
             display: flex;
-            flex-basis: 60%;
+            flex-wrap: wrap;
+            flex-basis: 70%;
             
             h4 {
                 font: rem(20px, 17px) $gotham-bold;
                 color: #fff;
                 text-align: left;
+                
+                &:nth-of-type(1) {
+                    margin-bottom: 10px;
+                }
+            }
+            
+            p {
+                font: rem(14px, 20px) $gotham-book;
+                color: #fff;
+                opacity: .5;
             }
         }
         

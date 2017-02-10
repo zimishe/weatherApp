@@ -7,9 +7,14 @@ import HumidityIcon from './../../assets/img/watering.png'
 import Windicon from './../../assets/img/wind-sign.png'
 import WindArrow from './../../assets/img/wind-arrow.png'
 
+import {getDate} from './../actions/getDateParams.js'
+import {getTime} from './../actions/getDateParams.js'
+import {getDay} from './../actions/getDateParams.js'
+
 class DayInfo extends React.Component {
     render() {
-        let weatherCode = this.props.weatherCode,
+        let stamp = this.props.dt,
+            weatherCode = this.props.weatherCode,
             windDegree = this.props.windDegree,
             degreeStyle = {
                 transform: 'rotate('+windDegree+'deg)'
@@ -23,8 +28,11 @@ class DayInfo extends React.Component {
                     </div>
                     <div className="weather-info__item__date">
                         <h4>
-                            {this.props.date}
-                        </h4>    
+                            {getDate(stamp)}
+                        </h4>   
+                        <p>
+                            {getDay(stamp)}, {getTime(stamp)}
+                        </p>
                     </div>
                 </div>
                 <div className="weather-info__item__text">
