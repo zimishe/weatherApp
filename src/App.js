@@ -8,13 +8,11 @@ import DayInfo from './components/DayInfo.js'
 
 import ItemsToShow from './components/ItemsTosShow.js'
 
-import {getData} from './getData.js'
-
 import './App.css';
 
 class Weather extends React.Component {
     componentDidMount() {
-        getData();
+   
     }
     
     componentWillReceiveProps() {

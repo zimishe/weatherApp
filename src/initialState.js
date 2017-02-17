@@ -1,7 +1,6 @@
 /**
  * Created by eugene on 08.02.17.
  */
-import {getData} from './getData.js'
 
 const toShowArr = [4, 10, 15];
 
@@ -21,7 +20,7 @@ const citiesList = [
 ];
 
 const initialState = {
-    weatherData: getData(),
+    weatherData: {},
     cityToShow: 702550,
     itemsToShow: 7,
     itemsShow: toShowArr,
