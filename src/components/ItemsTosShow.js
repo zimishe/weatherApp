@@ -2,10 +2,10 @@
  * Created by eugene on 07.02.17.
  */
 import React from 'react'
-import store from './../store.js'
+import store from './../store'
 import { connect } from 'react-redux'
 
-import {setItemsToShow} from './../actions/setItemsToShow.js'
+import {setItemsToShow} from './../actions/setItemsToShow'
 
 const mapDispatchToProps = function(dispatch) {
     return {

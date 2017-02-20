@@ -2,11 +2,11 @@ import React from 'react'
 
 import { connect } from 'react-redux'
 
-import store from './store.js'
-import Header from './components/Header.js'
-import DayInfo from './components/DayInfo.js'
+import store from './store'
+import Header from './components/Header'
+import DayInfo from './components/DayInfo'
 
-import ItemsToShow from './components/ItemsTosShow.js'
+import ItemsToShow from './components/ItemsTosShow'
 
 import './App.css';
 
